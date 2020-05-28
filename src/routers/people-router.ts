@@ -9,13 +9,8 @@ export const peopleRouter = express.Router();
     Retrieves an array of people from database
 */
 peopleRouter.get('', (request, response, next) => {
-    peopleService.getAllPeople().then(people => {
-        response.set('content-type', 'application/json');
-        response.json(people);
-        next();
-    }).catch(err => {
-        response.sendStatus(500);
-    });
+    const message = Math.random() > 0.5 ? 'Hello!' : 'Howdy!';
+    response.json({message});
 });
 
 peopleRouter.get('/hello', (request, response, next) => {

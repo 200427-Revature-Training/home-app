@@ -25,7 +25,7 @@ describe('GET /people', () => {
             .expect('content-type', 'application/json; charset=utf-8');
     });
     test('Returns normally under normal circumstances', async () => {
-        mockPeopleService.getAllPeople.mockImplementation(async () => {throw new Error()});
+        mockPeopleService.getAllPeople.mockImplementation(async () => { throw new Error() });
         await request(app)
             .get('/people')
             .expect(500);
@@ -49,7 +49,7 @@ describe('POST /people', () => {
     });
 
     test('Should return 500 when encountering an error', async () => {
-        mockPeopleService.savePerson.mockImplementation(async () => {throw new Error()});
+        mockPeopleService.savePerson.mockImplementation(async () => { throw new Error() });
 
         const payload = {
             firstName: 'John',
@@ -81,7 +81,7 @@ describe('GET /people/:id', () => {
             .expect('content-type', 'application/json; charset=utf-8')
     });
 
-    test('No object found (404)', async() => {
+    test('No object found (404)', async () => {
         mockPeopleService.getPersonById
             .mockImplementation(async () => (0));
 
@@ -90,9 +90,9 @@ describe('GET /people/:id', () => {
             .expect(404);
     });
 
-    test('500 internal server error', async() => {
+    test('500 internal server error', async () => {
         mockPeopleService.getPersonById
-            .mockImplementation(async () => {throw new Error()});
+            .mockImplementation(async () => { throw new Error() });
 
         await request(app)
             .get('/people/99')
