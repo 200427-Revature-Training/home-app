@@ -19,8 +19,10 @@ peopleRouter.get('', (request, response, next) => {
 });
 
 peopleRouter.get('/hello', (request, response, next) => {
-    response.json({message: "Hello!"})
-})
+    const message = Math.random() > 0.5 ? 'Hello!' : 'Howdy!';
+    response.json({message});
+});
+
 /*
     http://localhost:3000/people/1
     Retrieves a single person from the database by id
