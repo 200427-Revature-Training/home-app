@@ -8,6 +8,15 @@ const app = express();
 const port = process.env.port || 3000;
 app.set('port', port);
 
+/* CORS middleware - Sets CORS headers to allow requests from
+        the domain of the intended client */
+app.use((request, response, next) => {
+    response.setHeader('Access-Control-Allow-Origin', 'http://home-app-demo-client-4381.s3.us-east-1.amazonaws.com');
+    response.setHeader('Access-Control-Allow-Headers', 'content-type')
+    // response.setHeader('Access-Control-Allow-Methods', 'GET POST');
+    next();
+})
+
 /*
     ? Middleware Registration
 */
