@@ -8,6 +8,13 @@ const app = express();
 const port = process.env.port || 3000;
 app.set('port', port);
 
+/* CORS middleware - Sets CORS headers to allow requests from 
+        the domain of the intended client */
+app.use((request, response, next) => {
+    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3001');
+    next();
+})
+
 /*
     ? Middleware Registration
 */
