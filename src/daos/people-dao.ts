@@ -9,7 +9,7 @@ import { Pet } from '../models/Pet';
  */
 
 export function getAllPeople(): Promise<Person[]> {
-    const sql = 'SELECT * FROM people';
+    const sql = 'SELECT * FROM people ORDER BY id';
 
     // 1. Query database using sql statement above
     // 2. Query will return a promise typed as QueryResult<PersonRow>
